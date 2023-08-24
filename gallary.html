@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallary</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+        height: 100vh;    
+        background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, #374566), color-stop(100%, #010203));
+        background-image: -webkit-radial-gradient(#374566, #010203);
+        background-image: -moz-radial-gradient(#374566, #010203);
+        background-image: -o-radial-gradient(#374566, #010203);
+        background-image: radial-gradient(#374566, #010203);
+        }
+        a{
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row g-3" id="images">
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('count');
+        let count = parseInt(myParam);
+        console.log(myParam);
+        console.log(typeof(count));
+        if(myParam){
+            let htmlcode = ''
+            for(let i=1;i <= count;i++){
+                htmlcode += `
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div> 
+                    <a href="./images/${i}.jpg" class="fancybox" data-fancybox="gallery1">
+                        <img class="w-100" src="./images/${i}.jpg" alt="">
+                      </a>
+                </div>
+            </div>
+            `
+            }
+            document.getElementById('images').innerHTML= htmlcode
+        }
+    </script>
+</body>
+</html>
